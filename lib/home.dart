@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:islamy_app/ahadeth/ahadeth.dart';
-import 'package:islamy_app/quran/quran.dart';
-import 'package:islamy_app/radio/radio.dart';
-import 'package:islamy_app/sebha/sebha.dart';
 import 'package:islamy_app/styles/themes.dart';
+
+import 'modules/ahadeth/ahadeth.dart';
+import 'modules/quran/quran.dart';
+import 'modules/radio/radio.dart';
+import 'modules/sebha/sebha.dart';
 
 class HomePage extends StatefulWidget {
   static String ROUTE_NAME = 'home';

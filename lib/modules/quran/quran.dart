@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:islamy_app/quran/SuraName.dart';
+import 'package:islamy_app/modules/quran/SuraName.dart';
 import 'package:islamy_app/styles/themes.dart';
 
 class QuranPage extends StatelessWidget {
