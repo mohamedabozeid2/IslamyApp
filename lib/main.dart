@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:islamy_app/home.dart';
+import 'package:islamy_app/modules/ahadeth/HadethDetails.dart';
+import 'package:islamy_app/modules/quran/SuraDetails.dart';
+import 'package:islamy_app/styles/themes.dart';
 
 void main() {
   runApp(const MyApp());
@@ -14,16 +17,13 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
-      theme: ThemeData(
-        bottomNavigationBarTheme: BottomNavigationBarThemeData(
-          backgroundColor: Colors.blue,
-
-        ),
-        primarySwatch: Colors.blue,
-      ),
+      theme: lightTheme,
+      darkTheme: darkTheme,
+      themeMode: darkMode==true?ThemeMode.dark:ThemeMode.light,
       routes: {
         HomePage.ROUTE_NAME:(context)=>HomePage(),
-
+        SuraDetails.ROUTE_NAME:(context) => SuraDetails(),
+        HadethDetails.HADETH_ROUTE:(context) => HadethDetails(),
       },
       initialRoute: HomePage.ROUTE_NAME,
       // home: Scaffold(),

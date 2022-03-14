@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:islamy_app/styles/themes.dart';
 
+import 'modules/Settings/SettingsScreen.dart';
 import 'modules/ahadeth/ahadeth.dart';
 import 'modules/quran/quran.dart';
 import 'modules/radio/radio.dart';
@@ -13,6 +14,7 @@ class HomePage extends StatefulWidget {
     SebhaPage(),
     RadioPage(),
     AhadethPage(),
+    SettingsScreen(),
   ];
 
   @override
@@ -35,19 +37,27 @@ class _HomePageState extends State<HomePage> {
     const BottomNavigationBarItem(
         icon: ImageIcon(AssetImage('assets/images/icon_hadeth.png')),
         label: 'Ahadith'),
+    const BottomNavigationBarItem(
+        icon: Icon(Icons.settings), label: 'Settings'),
   ];
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: const BoxDecoration(
-          image: DecorationImage(
-              fit: BoxFit.fill,
-              image: AssetImage(
-                "assets/images/default_bg.png",
-              ))),
+      decoration: darkMode == false
+          ? const BoxDecoration(
+              image: DecorationImage(
+                  fit: BoxFit.fill,
+                  image: AssetImage(
+                    "assets/images/default_bg.png",
+                  )))
+          : const BoxDecoration(
+              image: DecorationImage(
+                  fit: BoxFit.fill,
+                  image: AssetImage(
+                    "assets/images/dark_bg.png",
+                  ))),
       child: Scaffold(
-        backgroundColor: Colors.transparent,
         appBar: AppBar(
           centerTitle: true,
           backgroundColor: Colors.transparent,
@@ -61,25 +71,18 @@ class _HomePageState extends State<HomePage> {
           ),
         ),
         body: widget.bodyWidgets[index],
-        bottomNavigationBar: Theme(
-          data: Theme.of(context).copyWith(
-            canvasColor: MyThemeData.primaryColor
-          ),
-          child: BottomNavigationBar(
-            onTap: (currentIndex){
-              changeBotNavindex(currentIndex);
-            },
-            showUnselectedLabels: true,
-            items: bottomNavItems,
-            currentIndex: index,
-            selectedItemColor: MyThemeData.accentColor,
-          ),
+        bottomNavigationBar: BottomNavigationBar(
+          onTap: (currentIndex) {
+            changeBotNavindex(currentIndex);
+          },
+          items: bottomNavItems,
+          currentIndex: index,
         ),
       ),
     );
   }
 
-  void changeBotNavindex(curretIndex){
+  void changeBotNavindex(curretIndex) {
     setState(() {
       index = curretIndex;
     });

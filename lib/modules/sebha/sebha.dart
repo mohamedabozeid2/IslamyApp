@@ -31,7 +31,7 @@ class _SebhaPageState extends State<SebhaPage> {
             child: InkWell(
               onTap: (){
                 counter++;
-                if(counter == 30){
+                if(counter == 33){
                   index++;
                   counter = 0;
                   if(index == tspeh.length-1){
@@ -42,27 +42,28 @@ class _SebhaPageState extends State<SebhaPage> {
 
                 });
               },
-              child: const Image(
+              child: Image(
                 image: AssetImage(
-                  'assets/images/body_sebha_logo.png'
+                  darkMode==true?'assets/images/body_sebha_dark.png':'assets/images/body_sebha_logo.png'
                 ),
               ),
             ),
           ),
           Container(
             margin: const EdgeInsets.fromLTRB(0, 0, 0, 15),
-            child: const Text(
+            child:  Text(
                 "عدد التسبيحات",
                 style: TextStyle(
                   fontSize: 25,
-                  fontWeight: FontWeight.w500
+                  fontWeight: FontWeight.w500,
+                  color: darkMode==true?Colors.white:Colors.black
                 ),
             ),
           ),
           Container(
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(20),
-              color: MyThemeData.primaryColor,
+              color: darkMode==true?Color(0xff141A2E):MyThemeData.primaryColor,
             ),
             padding: const EdgeInsets.all(18),
             child: Text(
@@ -78,7 +79,7 @@ class _SebhaPageState extends State<SebhaPage> {
             margin: const EdgeInsets.fromLTRB(0, 20, 0, 0),
             padding: const EdgeInsets.all(7),
             decoration: BoxDecoration(
-              color: MyThemeData.primaryColor,
+              color: darkMode==true?Color(0xffFACC1D):MyThemeData.primaryColor,
               borderRadius: BorderRadius.circular(20),
             ),
             child: Text(
