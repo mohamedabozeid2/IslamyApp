@@ -29,6 +29,7 @@ class _SebhaPageState extends State<SebhaPage> {
           Container(
             margin: const EdgeInsets.symmetric(vertical: 30),
             child: InkWell(
+              borderRadius: BorderRadius.circular(50),
               onTap: (){
                 counter++;
                 if(counter == 33){

@@ -79,7 +79,6 @@ class _SuraDetailsState extends State<SuraDetails> {
   void getSuraContainer()async{
     String suraContainer = await rootBundle.loadString("assets/files/${argument!.index+1}.txt");
     sura += suraContainer;
-    print("Sura = $sura");
     setState(() {
 
     });
