@@ -74,14 +74,6 @@ class _SettingsScreenState extends State<SettingsScreen> {
                     ),
                   ],
                 ),
-                Text(
-                  "By/ ابوزيد الجامد",
-                  style: TextStyle(
-                    color: darkMode?Colors.white:Colors.black,
-                    fontSize: 22,
-                    fontWeight: FontWeight.bold
-                  ),
-                )
               ],
             )
           ],
