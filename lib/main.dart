@@ -5,23 +5,31 @@ import 'package:islamy_app/modules/Settings/cubit/cubit.dart';
 import 'package:islamy_app/modules/Settings/states/states.dart';
 import 'package:islamy_app/modules/ahadeth/HadethDetails.dart';
 import 'package:islamy_app/modules/quran/SuraDetails.dart';
+import 'package:islamy_app/shared/components/constants.dart';
+import 'package:islamy_app/shared/network/local/cache_helper.dart';
 import 'package:islamy_app/styles/themes.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 
-void main() {
-  runApp(const MyApp());
+void main() async{
+  WidgetsFlutterBinding.ensureInitialized();
+  await CacheHelper.init();
+
+  isDark = CacheHelper.getData(key: 'isDark');
+
+  runApp(MyApp(isDark));
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
 
+  final dynamic isDark;
+  MyApp(this.isDark);
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (BuildContext context) => IslamyCubit(),
+      create: (BuildContext context) => IslamyCubit()..changeMode(fromShared: isDark),
       child: BlocConsumer<IslamyCubit, IslamyStates>(
         listener: (BuildContext context, state) {  },
         builder: (BuildContext context, Object? state) {

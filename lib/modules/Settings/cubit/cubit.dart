@@ -1,5 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:islamy_app/modules/Settings/states/states.dart';
+import 'package:islamy_app/shared/network/local/cache_helper.dart';
 import 'package:islamy_app/styles/themes.dart';
 
 class IslamyCubit extends Cubit<IslamyStates>{
@@ -18,8 +19,13 @@ class IslamyCubit extends Cubit<IslamyStates>{
     emit(IslamyChangeLanguageState());
   }
 
-  void changeMode(){
-    darkMode = !darkMode;
+  void changeMode({bool? fromShared}){
+    if(fromShared != null){
+      darkMode = fromShared;
+    }else{
+      darkMode = !darkMode;
+    }
+    CacheHelper.saveData(key: 'isDark', value: darkMode).then((value){});
     emit(IslamyChangeModeState());
   }
 
